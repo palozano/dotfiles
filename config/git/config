@@ -1,0 +1,80 @@
+[user]
+	name = Pablo Lozano
+	email = nivolabs@proton.me
+	signingkey = 11E86BFBF2ADF977
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	frag = magenta bold
+	meta = yellow bold
+	new = green bold
+	old = red bold
+	whitespace = red reverse
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[help]
+	autoCorrect = immediate
+[gpg]
+	program = gpg2
+[credential]
+	helper = osxkeychain
+[fetch]
+	prune = true
+[commit]
+	gpgsign = true
+	# template = /Users/palozano/.stCommitMsg
+[alias]
+	s = status --short --branch
+
+	# POSIX shell function
+	u = "!f() { git add --update \"$@\" && git status; }; f"
+
+	# Nothing happens if you type `$ git git branch`
+	git = !git
+
+	# use main in legacy repositories by running `$ git alias-master-as-main`
+	alias-master-as-main = !git symbolic-ref refs/heads/main refs/heads/master && git symbolic-ref refs/remotes/origin/main refs/remotes/origin/master && git switch main
+
+	# update after the remote repo changes to main
+	#
+	# $ git switch master
+	# $ git symbolic-ref -d refs/heads/main
+	# $ git symbolic-ref -d refs/remotes/origin/main
+	#
+	# $ git branch -m master main
+	# $ git fetch origin
+	# $ git branch -u origin/main main
+	# $ git remote set-head origin -a
+
+	# choose which branch to switch to interactively with a preview of th log
+	switch-recent = !git branch --sort=-committerdate --format='%(refname:short)' | fzf --preview='git log --date=relative --color master..{}' | xargs git switch
+
+	# delete all branches that have been merged into main
+	rm-merged = !git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D
+	
+	# sync by going into main, pulling and deleting all merged branches
+	sync = !git switch main && git pull && git rm-merged && git switch -
+[pager]
+	status = true
+[core]
+	pager = delta
+[delta]
+	# https://dandavison.github.io/delta/configuration.html
+	hyperlinks = true
+	line-numbers = true
+	navigate = true
+	syntax-theme = Monokai Extended
+[diff]
+	colorMoved = default
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictStyle = zdiff3
+[init]
+	defaultBranch = main
+[branch]
+	sort = -committerdate
