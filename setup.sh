@@ -12,5 +12,11 @@ mkdir -p ~/.config
 # Link Git config if it doesn’t exist
 [ ! -e ~/.config/git ] && ln -s "$PWD/config/git" ~/.config/git
 
-# Add the Oh-My-Zsh config file
-[ ! -e ~/.config/zshrc ] && ln -s "$PWD/config/zshrc" ~/.zshrc
+# Add the Zsh config file if it doesn’t exist
+[ ! -e ~/.zshrc ] && ln -s "$PWD/config/zshrc" ~/.zshrc
+
+# Add the neovim config file if it doesn’t exist
+[ ! -e ~/.config/nvim ] && ln -s "$PWD/config/nvim" ~/.config/nvim
+
+# Add the emacs config file if it doesn’t exist
+[ ! -e ~/.config/emacs ] && ln -s "$PWD/config/emacs" ~/.config/emacs
