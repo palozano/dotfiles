@@ -78,3 +78,5 @@
 	defaultBranch = main
 [branch]
 	sort = -committerdate
+[push]
+	autoSetupRemote = true

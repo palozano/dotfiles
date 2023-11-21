@@ -1,0 +1,1 @@
+("~/dev/repyh/" "~/dev/dotfiles/" "/opt/homebrew/")
