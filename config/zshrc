@@ -132,8 +132,8 @@ export EDITOR="nvim"
 
 alias search="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs nvim"
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
-
 alias work="cd ~/dev/repyh"
+alias webget="wget --mirror --convert-links --adjust-extension --page-requisites --no-parent"
 
 PATH="/Applications/CMake.app/Contents/bin":"$PATH"
 

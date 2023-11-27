@@ -55,7 +55,7 @@
 
 	# delete all branches that have been merged into main
 	rm-merged = !git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D
-	
+
 	# sync by going into main, pulling and deleting all merged branches
 	sync = !git switch main && git pull && git rm-merged && git switch -
 [pager]
@@ -70,6 +70,8 @@
 	syntax-theme = Monokai Extended
 [diff]
 	colorMoved = default
+	algorithm = histogram
+	interHunkContext = 5
 [interactive]
 	diffFilter = delta --color-only
 [merge]
@@ -80,3 +82,10 @@
 	sort = -committerdate
 [push]
 	autoSetupRemote = true
+[diff "exiftool"]
+	textconv = exiftool --composite -x 'Exiftool:*' -x 'File:*' -g0
+	cachetextconv = true
+	xfuncname = "^-.*$"
+[diff "pandoc-to-markdown"]
+	textconv = pandoc --to markdown
+	cachetextconv = true
