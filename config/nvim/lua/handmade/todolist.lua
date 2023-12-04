@@ -1,3 +1,7 @@
+-- You can load your handmade plugins in here too!
+vim.keymap.set('n', '<leader>tt', function() require('handmade.todolist').todolist() end,
+	{ desc = 'Open [t]odolist' })
+
 local M = {}
 
 M.todolist = function()

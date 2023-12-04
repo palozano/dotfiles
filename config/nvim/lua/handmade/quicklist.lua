@@ -1,3 +1,15 @@
+-- Custom plugin to grep and replace
+vim.keymap.set('n', '<leader>sV', function() require('handmade.quicklist').vimgrep_ui() end,
+	{ desc = '[s]earch with [V]imgrep' })
+vim.keymap.set('n', '<leader>sR',
+	function() require('handmade.quicklist').replace_in_quickfix_list() end,
+	{ desc = 'in quickfix list [s]earch, replace' })
+-- Search across branches
+vim.keymap.set('n', '<leader>sB', function() require('handmade.git').grep_in_vim() end,
+	{ desc = "[s]earch across all git [B]ranches" })
+vim.keymap.set('n', '<leader>qx', function() require('handmade.quicklist').command_to_execute_in_quickfix_list() end,
+	{ desc = '[q]uickfix: e[x]ecute...' })
+
 local M = {}
 
 M.vimgrep_ui = function()

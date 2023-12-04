@@ -1,3 +1,6 @@
+vim.keymap.set({ "n", "x" }, "<leader>ssr", function() require("ssr").open() end,
+  { desc = '[s]tructural [s]earch and [r]eplace' })
+
 return {
   "cshuaimin/ssr.nvim",
   module = "ssr",

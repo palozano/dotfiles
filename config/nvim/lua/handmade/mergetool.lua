@@ -1,3 +1,7 @@
+-- Merge tool
+vim.keymap.set('n', '<leader>mt', function() require('handmade.mergetool').select_revision_or_commit() end,
+	{ desc = '[m]erge [t]ool' })
+
 local M = {}
 
 M.select_revision_or_commit = function()

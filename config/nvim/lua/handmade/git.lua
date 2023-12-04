@@ -1,3 +1,7 @@
+-- Show file at commit
+vim.keymap.set('n', '<leader>gs', function() require('handmade.git').git_show_file_at_commit() end,
+	{ desc = "[s]how commit at revision" })
+
 local M = {}
 
 M.grep_in_vim = function()
