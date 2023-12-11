@@ -50,7 +50,7 @@ require('lazy').setup({
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     opts = {
-      inlay_hints = { enabled = true },
+      inlay_hints = { enabled = true, visible = true },
     },
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -65,12 +65,12 @@ require('lazy').setup({
       'folke/neodev.nvim',
 
       -- Types in the way
-      {
-        'simrat39/inlay-hints.nvim',
-        config = function()
-          require('inlay-hints').setup()
-        end,
-      }
+      -- {
+      --   'simrat39/inlay-hints.nvim',
+      --   config = function()
+      --     require('inlay-hints').setup()
+      --   end,
+      -- }
     },
   },
 
