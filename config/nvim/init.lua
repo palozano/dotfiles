@@ -50,7 +50,7 @@ require('lazy').setup({
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     opts = {
-      inlay_hints = { enabled = true, visible = true },
+      inlay_hints = { enabled = true },
     },
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -501,6 +501,7 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
+      hint = { enable = true }
     },
   },
 }
@@ -703,6 +704,11 @@ require('mini.ai').setup()
 -- indent blank line
 require("ibl").setup()
 
+-- Toggle inlay hints
+if vim.lsp.inlay_hint then
+  vim.keymap.set('n', '<leader>ih', function() vim.lsp.inlay_hint.enable(0, not (vim.lsp.inlay_hint.is_enabled(0))) end,
+    { desc = '[i]nlay [h]int toggle' })
+end
 
 
 
