@@ -10,9 +10,35 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.color_scheme = 'Batman'
+function get_appearance()
+	if wezterm.gui then
+		return wezterm.gui.get_appearance()
+	end
+	return 'Dark'
+end
+
+function scheme_for_appearance(appearance)
+	if appearance:find 'Dark' then
+		return 'Batman'
+	else
+		-- return 'Builtin Solarized Light'
+		return 'Builtin Tango Light'
+	end
+end
+
+-- config.color_scheme = 'Batman'
+config.color_scheme = scheme_for_appearance(get_appearance())
 config.font = wezterm.font('Iosevka Light', { weight = 'Light', italic = false })
 config.font_size = 17.0
+
+config.window_decorations = "RESIZE"
+
+config.window_padding = {
+	left = 20,
+	right = 20,
+	top = 20,
+	bottom = 0,
+}
 
 
 -- and finally, return the configuration to wezterm

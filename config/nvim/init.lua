@@ -303,8 +303,8 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
     'bash', 'c', 'go', 'lua', 'python', 'rust',
-    'vimdoc', 'vim', 'html', 'css',
-    'json', 'yaml', 'toml'
+    'vimdoc', 'vim', 'html', 'http', 'css',
+    'json', 'yaml', 'toml', 'elixir'
   },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)

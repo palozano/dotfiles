@@ -58,8 +58,11 @@
 
 	# sync by going into main, pulling and deleting all merged branches
 	sync = !git switch main && git pull && git rm-merged && git switch -
+
+	dft = difftool
 [pager]
 	status = true
+	difftool = true
 [core]
 	pager = delta
 [delta]
@@ -69,9 +72,14 @@
 	navigate = true
 	syntax-theme = Monokai Extended
 [diff]
-	colorMoved = default
-	algorithm = histogram
-	interHunkContext = 5
+	# colorMoved = default
+	# algorithm = histogram
+	# interHunkContext = 5
+	tool = difftastic
+[difftool]
+	prompt = false
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
 [interactive]
 	diffFilter = delta --color-only
 [merge]
