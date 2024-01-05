@@ -26,8 +26,8 @@ function scheme_for_appearance(appearance)
 	end
 end
 
--- config.color_scheme = 'Batman'
-config.color_scheme = scheme_for_appearance(get_appearance())
+config.color_scheme = 'Batman'
+-- config.color_scheme = scheme_for_appearance(get_appearance())
 config.font = wezterm.font('Iosevka Light', { weight = 'Light', italic = false })
 config.font_size = 17.0
 

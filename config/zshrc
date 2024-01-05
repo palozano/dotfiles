@@ -16,13 +16,11 @@ alias llt="exa -1 --icons --tree --git-ignore"
 alias tz="TZ_LIST=\"Europe/Lisbon;Europe/London;US/Eastern,US-East;US/Pacific,US-Pacific;UTC\" tz"
 
 # Editors
-# alias purcell="emacs --with-profile purcell"
-# alias vanilla="emacs --with-profile vanilla"
-alias kick="NVIM_APPNAME=kickstart nvim"
-alias folke="NVIM_APPNAME=folke nvim"
-alias lazy="NVIM_APPNAME=lazy nvim"
+# alias kick="NVIM_APPNAME=kickstart nvim"
+# alias folke="NVIM_APPNAME=folke nvim"
+# alias lazy="NVIM_APPNAME=lazy nvim"
+alias cyber="NVIM_APPNAME=cyber nvim"
 
-# export EDITOR="code --wait"
 export EDITOR="nvim"
 
 alias search="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs nvim"
