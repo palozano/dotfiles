@@ -114,8 +114,10 @@ require('lazy').setup({
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
           { buffer = bufnr, desc = '[g]o to [p]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[g]o to [n]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[p]review [h]unk' })
+        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk,
+          { buffer = bufnr, desc = '[g]o to [n]ext Hunk' })
+        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk,
+          { buffer = bufnr, desc = '[p]review [h]unk' })
       end,
     },
   },
@@ -144,14 +146,14 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- See `:help indent_blankline.txt`
-    -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    main = "ibl",
-    opts = {
-    },
-  },
+  --{
+  --  -- See `:help indent_blankline.txt`
+  --  -- Add indentation guides even on blank lines
+  --  'lukas-reineke/indent-blankline.nvim',
+  --  main = "ibl",
+  --  opts = {
+  --  },
+  --},
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',         opts = {} },
@@ -303,9 +305,10 @@ pcall(require('telescope').load_extension, 'fzf')
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
-    'bash', 'c', 'go', 'lua', 'python', 'rust',
+    'bash', 'c', 'lua', 'rust',
     'vimdoc', 'vim', 'html', 'http', 'css',
-    'json', 'yaml', 'toml', 'elixir'
+    'json', 'yaml', 'toml',
+    -- 'elixir', 'python', 'go'
   },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -643,11 +646,12 @@ require('mini.trailspace').setup()
 require('mini.ai').setup()
 
 -- indent blank line
-require("ibl").setup()
+-- require("ibl").setup()
 
 -- Toggle inlay hints
 if vim.lsp.inlay_hint then
-  vim.keymap.set('n', '<leader>ih', function() vim.lsp.inlay_hint.enable(0, not (vim.lsp.inlay_hint.is_enabled(0))) end,
+  vim.keymap.set('n', '<leader>ih',
+    function() vim.lsp.inlay_hint.enable(0, not (vim.lsp.inlay_hint.is_enabled(0))) end,
     { desc = '[i]nlay [h]int toggle' })
 end
 
