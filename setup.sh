@@ -21,6 +21,6 @@ ln -sf "$PWD/config/zshrc" ~/.zshrc
 # [ ! -e ~/.config/nvim ] && ln -s "$PWD/config/nvim" ~/.config/nvim
 ln -sf "$PWD/config/nvim" ~/.config/nvim
 
-# Add the emacs config if it doesn’t exist
-# [ ! -e ~/.config/emacs ] && ln -s "$PWD/config/emacs" ~/.config/emacs
-ln -sf "$PWD/config/emacs" ~/.config/emacs
+# Add the tmux config if it doesn’t exist
+# [ ! -e ~/.tmux.conf ] && ln -s "$PWD/config/tmux.conf" ~/.tmux.conf
+ln -sf "$PWD/config/tmux.conf" ~/.tmux.conf
