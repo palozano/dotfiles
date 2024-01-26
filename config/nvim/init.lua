@@ -122,43 +122,6 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = true,
-        -- theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-      },
-      sections = {
-        lualine_a = { "" },
-        lualine_b = { "branch", "diff" },
-        lualine_c = {
-          {
-            "filename",
-            file_status = true,
-            path = 1, -- 2 = full path, 1 = relative path, 0 = filename only
-          },
-        },
-        lualine_x = { "diagnostics" },
-        lualine_y = { "filesize" },
-        lualine_z = {},
-      },
-    },
-  },
-
-  --{
-  --  -- See `:help indent_blankline.txt`
-  --  -- Add indentation guides even on blank lines
-  --  'lukas-reineke/indent-blankline.nvim',
-  --  main = "ibl",
-  --  opts = {
-  --  },
-  --},
-
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',         opts = {} },
 
@@ -303,6 +266,8 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
+vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+local git_blame = require('gitblame')
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`

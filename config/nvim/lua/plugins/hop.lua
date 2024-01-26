@@ -6,6 +6,7 @@ return {
   opts = {},
   keys = {
     {
+      -- Previous
       -- '<leader>f',
       's',
       function()
@@ -15,6 +16,7 @@ return {
       desc = '[f]: Hop (forwards) to any word'
     },
     {
+      -- Previous
       -- '<leader>F',
       'S',
       function()
