@@ -97,3 +97,5 @@
 [diff "pandoc-to-markdown"]
 	textconv = pandoc --to markdown
 	cachetextconv = true
+[pull]
+	rebase = false

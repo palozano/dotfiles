@@ -135,6 +135,7 @@ require('lazy').setup({
       },
       sections = {
         lualine_a = { "" },
+        lualine_b = { "branch", "diff" },
         lualine_c = {
           {
             "filename",
@@ -142,6 +143,9 @@ require('lazy').setup({
             path = 1, -- 2 = full path, 1 = relative path, 0 = filename only
           },
         },
+        lualine_x = { "diagnostics" },
+        lualine_y = { "filesize" },
+        lualine_z = {},
       },
     },
   },
