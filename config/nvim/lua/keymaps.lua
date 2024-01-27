@@ -103,4 +103,17 @@ return {
   -- NOTE: I don't know where this comes from
   vim.keymap.set('n', '<leader>qt', ':TodoQuickFix<CR>', { desc = '[q]uickfix list: open the [t]odo items' }),
 
+  -- [[ lua/handmade/quicklist.lua ]]
+  -- Custom plugin to grep and replace
+  vim.keymap.set('n', '<leader>sv', function() require('handmade.quicklist').vimgrep_ui() end,
+    { desc = '[s]earch with [v]imgrep' }),
+  vim.keymap.set('n', '<leader>sr',
+    function() require('handmade.quicklist').replace_in_quickfix_list() end,
+    { desc = "in quickfix-list's [s]earch, [r]eplace" }),
+
+  -- Search across branches
+  vim.keymap.set('n', '<leader>sb', function() require('handmade.git').grep_in_vim() end,
+    { desc = "[s]earch across all git [b]ranches" }),
+  vim.keymap.set('n', '<leader>qx', function() require('handmade.quicklist').command_to_execute_in_quickfix_list() end,
+    { desc = '[q]uickfix: e[x]ecute...' }),
 }
