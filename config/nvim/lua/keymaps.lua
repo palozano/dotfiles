@@ -13,6 +13,10 @@ return {
   vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true }),
   vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true }),
 
+  -- Better movement
+  vim.keymap.set('n', "<C-u>", "<C-u> zz", { silent = true }),
+  vim.keymap.set('n', "<C-d>", "<C-d> zz", { silent = true }),
+
   -- faster resize windows
   vim.keymap.set("n", "<M-Up>", ":resize -2<CR>", { desc = "Resize window up" }),
   vim.keymap.set("n", "<M-Down>", ":resize +2<CR>", { desc = "Resize window down" }),
@@ -89,8 +93,6 @@ return {
 
 
   -- [[ Other keymaps ]]
-  -- NOTE: I cannot put this inside the individual plugin file, don't know why.
-  --
   -- NOTE: `open_float` does not let you open preview with C-p, so now we use `open` and C-c to close Oil.
   vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" }),
 

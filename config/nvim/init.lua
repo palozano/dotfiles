@@ -214,7 +214,7 @@ vim.o.termguicolors = true
 vim.o.cursorline = true
 
 -- Some scroll off when moving around
-vim.o.scrolloff = 3
+vim.o.scrolloff = 5
 
 -- Sometimes this is handy
 -- vim.o.colorcolumn = '120'
