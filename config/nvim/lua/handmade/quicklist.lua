@@ -33,7 +33,7 @@ end
 
 M.command_to_execute_in_quickfix_list = function()
 	-- Ask for the replacement of the search
-	vim.ui.input({ prompt = "Command to do `| update` with >  :cfdo " },
+	vim.ui.input({ prompt = "Command to do `:cfdo ______ | update` with -> " },
 		function(command)
 			-- Return early if empty
 			if command == "" or command == nil then return end

@@ -230,6 +230,7 @@ vim.g.undotree_WindowLayout = 4
 vim.g.undotree_SplitWidth = 40
 vim.g.undotree_DiffpanelHeight = 20
 
+vim.o.wildignore = "target/**"
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`

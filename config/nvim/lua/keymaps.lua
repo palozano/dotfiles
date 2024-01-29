@@ -14,8 +14,8 @@ return {
   vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true }),
 
   -- Better movement
-  vim.keymap.set('n', "<C-u>", "<C-u> zz", { silent = true }),
-  vim.keymap.set('n', "<C-d>", "<C-d> zz", { silent = true }),
+  vim.keymap.set('n', "<C-u>", "<C-u>zz", { silent = true }),
+  vim.keymap.set('n', "<C-d>", "<C-d>zz", { silent = true }),
 
   -- faster resize windows
   vim.keymap.set("n", "<M-Up>", ":resize -2<CR>", { desc = "Resize window up" }),
@@ -25,7 +25,7 @@ return {
 
   -- See `:help telescope.builtin`
   vim.keymap.set('n', '<leader>.', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' }),
-  vim.keymap.set('n', '<leader>,', require('telescope.builtin').buffers, { desc = '[,] Find existing buffers' }), -- space space
+  vim.keymap.set('n', '<leader>,', require('telescope.builtin').buffers, { desc = '[,] Find existing buffers' }),
   vim.keymap.set('n', '<leader>/', require('telescope.builtin').current_buffer_fuzzy_find,
     { desc = '[/] Fuzzily search in current buffer' }),
 
@@ -34,14 +34,12 @@ return {
   -- go to definition
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, desc = "Go to [d]efinition" }),
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { noremap = true, silent = true, desc = "Go to [D]eclaration" }),
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[g]o to [d]efinition' }),
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = '[g]o to [D]eclaration' }),
   vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = '[g]o to [r]eferences' }),
   vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { desc = '[g]o to [I]mplementation' }),
   vim.keymap.set('n', 'gT', vim.lsp.buf.type_definition, { desc = '[g]o to [T]ype definition' }),
   -- from here: https://sharksforarms.dev/posts/neovim-rust/
-  vim.keymap.set('n', "gW", vim.lsp.buf.workspace_symbol, { desc = "[W]orkspace symbol" }),
-  vim.keymap.set("n", "g0", vim.lsp.buf.document_symbol, { desc = "Document symbol" }),
+  vim.keymap.set('n', "gW", vim.lsp.buf.workspace_symbol, { desc = "[g]o to [W]orkspace symbol" }),
+  vim.keymap.set("n", "g0", vim.lsp.buf.document_symbol, { desc = "List document symbols" }),
 
   -- [[ s ]]
   --
@@ -106,16 +104,16 @@ return {
   vim.keymap.set('n', '<leader>qt', ':TodoQuickFix<CR>', { desc = '[q]uickfix list: open the [t]odo items' }),
 
   -- [[ lua/handmade/quicklist.lua ]]
-  -- Custom plugin to grep and replace
   vim.keymap.set('n', '<leader>sv', function() require('handmade.quicklist').vimgrep_ui() end,
     { desc = '[s]earch with [v]imgrep' }),
-  vim.keymap.set('n', '<leader>sr',
-    function() require('handmade.quicklist').replace_in_quickfix_list() end,
-    { desc = "in quickfix-list's [s]earch, [r]eplace" }),
 
-  -- Search across branches
+  vim.keymap.set('n', '<leader>qr',
+    function() require('handmade.quicklist').replace_in_quickfix_list() end,
+    { desc = "[q]uickfix-list's [r]eplace" }),
+
   vim.keymap.set('n', '<leader>sb', function() require('handmade.git').grep_in_vim() end,
     { desc = "[s]earch across all git [b]ranches" }),
+
   vim.keymap.set('n', '<leader>qx', function() require('handmade.quicklist').command_to_execute_in_quickfix_list() end,
     { desc = '[q]uickfix: e[x]ecute...' }),
 }
