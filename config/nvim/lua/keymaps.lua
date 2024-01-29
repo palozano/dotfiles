@@ -53,6 +53,7 @@ return {
     { desc = 'search [D]ocument symbols' }),
   vim.keymap.set('n', '<leader>sW', require('telescope.builtin').lsp_dynamic_workspace_symbols,
     { desc = 'search [W]orkspace symbols' }),
+  vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc = '[s]earch [c]ommands' }),
 
   -- [[ d ]]    Diagnostic keymaps
   --
@@ -91,19 +92,25 @@ return {
 
 
   -- [[ Other keymaps ]]
+  --
   -- NOTE: `open_float` does not let you open preview with C-p, so now we use `open` and C-c to close Oil.
   vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" }),
 
   -- NOTE: I cannot put this inside the individual plugin file, don't know why. (Maybe lazy loading or something?)
   vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end, { desc = '[t]est neares[t]' }),
   vim.keymap.set('n', '<leader>tT', function() require('neotest').run.run(vim.fn.expand('%')) end,
-    { desc = '[t]est all [T]est' }),
-  vim.keymap.set('n', '<leader>tr', function() require('neotest').run.run_last() end, { desc = '[t]est p[r]evious' }),
+    { desc = '[t]est all [T]ests' }),
+  vim.keymap.set('n', '<leader>tp', function() require('neotest').run.run_last() end, { desc = '[t]est [p]revious' }),
+  vim.keymap.set('n', '<leader>ts', function() require('neotest').summary.toggle() end, { desc = '[t]est [s]ummary' }),
+  vim.keymap.set('n', '<leader>to', function() require('neotest').output_panel.toggle() end,
+    { desc = "[t]est's [o]utput panel" }),
+  vim.keymap.set('n', '<leader>tw', function() require('neotest').watch.toggle() end, { desc = '[t]est [w]atch' }),
 
   -- NOTE: I don't know where this comes from
   vim.keymap.set('n', '<leader>qt', ':TodoQuickFix<CR>', { desc = '[q]uickfix list: open the [t]odo items' }),
 
   -- [[ lua/handmade/quicklist.lua ]]
+  --
   vim.keymap.set('n', '<leader>sv', function() require('handmade.quicklist').vimgrep_ui() end,
     { desc = '[s]earch with [v]imgrep' }),
 

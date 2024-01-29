@@ -18,7 +18,7 @@ return {
         {
           "filename",
           file_status = true,
-          path = 1, -- 2 = full path, 1 = relative path, 0 = filename only
+          path = 0, -- 2 = full path, 1 = relative path, 0 = filename only
         },
       },
       lualine_x = {
