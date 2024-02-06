@@ -6,8 +6,7 @@ return {
   opts = {},
   keys = {
     {
-      -- Previous
-      -- '<leader>f',
+      -- Previous '<leader>f',
       's',
       function()
         require('hop').hint_words({ direction = require('hop.hint').HintDirection.AFTER_CURSOR, current_line_only = false })
@@ -16,8 +15,7 @@ return {
       desc = '[s]: Hop (forwards) to any word'
     },
     {
-      -- Previous
-      -- '<leader>F',
+      -- Previous '<leader>F',
       'S',
       function()
         require('hop').hint_words({ direction = require('hop.hint').HintDirection.BEFORE_CURSOR, current_line_only = false })

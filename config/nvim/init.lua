@@ -1,8 +1,7 @@
 --[[
 
 Based on kickstart.nvim, which is *not* a distribution.
-Read through a guide: https://learnxinyminutes.com/docs/lua/
-Then you can explore or search through `:help lua-guide`.
+You can explore or search through `:help lua-guide`.
 
 --]]
 
@@ -14,8 +13,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Yet another package manager
---    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
+-- `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -29,11 +27,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
 --  You can also configure plugins after the setup call,
---  a s they will be available in your neovim runtime.
+--  as they will be available in your neovim runtime.
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
@@ -50,7 +45,11 @@ require('lazy').setup({
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     opts = {
-      inlay_hints = { enabled = true },
+      setup = {
+        rust_analyzer = function()
+          return true
+        end
+      },
     },
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
@@ -63,14 +62,6 @@ require('lazy').setup({
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
-
-      -- Types in the way
-      -- {
-      --   'simrat39/inlay-hints.nvim',
-      --   config = function()
-      --     require('inlay-hints').setup()
-      --   end,
-      -- }
     },
   },
 
@@ -90,7 +81,7 @@ require('lazy').setup({
     },
   },
 
-  -- Useful plugin to show you pending keybinds.
+  -- Useful plugin to show your pending keybinds.
   {
     'folke/which-key.nvim',
     init = function()
@@ -99,6 +90,7 @@ require('lazy').setup({
     end,
     opts = {}
   },
+
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -150,21 +142,11 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  -- NOTE: Next Step on Your heovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  --
   -- require 'plugins.autoformat',
   -- require 'plugins.debug',
 
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
+  -- Add your plugins to `lua/custom/plugins/*.lua` to get going.
   { import = 'plugins' },
-  -- { import = 'handmade' },
   { import = 'keymaps' },
 }, {})
 
@@ -268,8 +250,6 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
-vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-local git_blame = require('gitblame')
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -342,76 +322,26 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- -- [[ Configure LSP ]]
--- --  This function gets run when an LSP connects to a particular buffer.
--- local on_attach = function(_, bufnr)
---   -- NOTE: Remember that lua is a real programming language, and as such it is possible
---   -- to define small helper and utility functions so you don't have to repeat yourself
---   -- many times.
---   --
---   -- In this case, we create a function that lets us more easily define mappings specific
---   -- for LSP related items. It sets the mode, buffer and description for us each time.
---   local nmap = function(keys, func, desc)
---     if desc then
---       desc = 'LSP: ' .. desc
---     end
---
---     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
---   end
---
---   nmap('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
---   nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
---
---   nmap('gd', vim.lsp.buf.definition, '[g]o to [d]efinition')
---   nmap('gD', vim.lsp.buf.declaration, '[g]o to [D]eclaration')
---   nmap('gr', require('telescope.builtin').lsp_references, '[g]o to [r]eferences')
---   nmap('gI', vim.lsp.buf.implementation, '[g]o to [I]mplementation')
---   nmap('gT', vim.lsp.buf.type_definition, '[g]o to [T]ype definition')
---   nmap('<leader>sD', require('telescope.builtin').lsp_document_symbols, 'search [D]ocument symbols')
---   nmap('<leader>sW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'search [W]orkspace symbols')
---
---   -- See `:help K` for why this keymap
---   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
---   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
---
---   -- Lesser used LSP functionality
---   nmap('<leader>wfa', vim.lsp.buf.add_workspace_folder, '[w]orkspace [f]older [a]dd')
---   nmap('<leader>wfr', vim.lsp.buf.remove_workspace_folder, '[w]orkspace [f]older [r]emove ')
---   nmap('<leader>wfl', function()
---     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
---   end, '[w]orkspace [f]olders [l]ist')
---
---   -- Create a command `:Format` local to the LSP buffer
---   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
---     vim.lsp.buf.format()
---   end, { desc = 'Format current buffer with LSP' })
--- end
+require 'treesitter-context'.setup {
+  enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
+  max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
+  min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+  line_numbers = true,
+  multiline_threshold = 20, -- Maximum number of lines to show for a single context
+  trim_scope = 'outer',     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+  mode = 'cursor',          -- Line used to calculate context. Choices: 'cursor', 'topline'
+  -- Separator between context and content. Should be a single character string, like '-'.
+  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+  separator = nil,
+  zindex = 20,     -- The Z-index of the context window
+  on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+}
 
--- Enable the following language servers
+--  Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {
-  --   ['rust-analyzer'] = {
-  --     checkOnSave = {
-  --       -- command = "+nightly-2023-09-05 fmt --all",
-  --       command = "+nightly-2023-09-05 clippy",
-  --       command = "clippy",
-  --     },
-  --     -- cargo = {
-  --     --   loadOutDirsFromCheck = true,
-  --     -- },
-  --     -- procMacro = {
-  --     --   enable = true,
-  --     -- },
-  --   },
-  -- },
-  -- tsserver = {},
-
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -497,127 +427,32 @@ cmp.setup {
   },
 }
 
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    {
+      name = 'cmdline',
+      option = {
+        ignore_cmds = { 'Man', '!' }
+      }
+    }
+  })
+})
+
 
 -- Magit for vim
--- For more, see: https://github.com/NeogitOrg/neogit
 local neogit = require('neogit')
 neogit.setup {}
 
 
--- Nice rusty tools
--- require('rust-tools').setup {
---   tools = {
---     autoSetHints = true,
---
---     runnables = {
---       use_telescope = true,
---     },
---
---     debuggables = {
---       use_telescope = true,
---     },
---
---     -- how to execute terminal commands; options right now: termopen / quickfix
---     executor = require("rust-tools/executors").quickfix,
---
---     -- callback to execute once rust-analyzer is done initializing the workspace
---     -- The callback receives one parameter indicating the `health` of the server: "ok" | "warning" | "error"
---     on_initialized = nil,
---
---     -- automatically call RustReloadWorkspace when writing to a Cargo.toml file.
---     reload_workspace_from_cargo_toml = true,
---
---     -- These apply to the default RustSetInlayHints command
---     inlay_hints = {
---       -- automatically set inlay hints (type hints); default: true
---       auto = true,
---       -- Only show inlay hints for the current line
---       only_current_line = false,
---       -- whether to show parameter hints with the inlay hints or not; default: true
---       show_parameter_hints = true,
---       -- prefix for parameter hints; default: "<-"
---       parameter_hints_prefix = "<- ",
---       -- prefix for all the other hints (type, chaining); default: "=>"
---       other_hints_prefix = "=> ",
---       -- whether to align to the lenght of the longest line in the file
---       max_len_align = false,
---       -- padding from the left if max_len_align is true
---       max_len_align_padding = 1,
---       -- whether to align to the extreme right or not
---       right_align = false,
---       -- padding from the right if right_align is true
---       right_align_padding = 7,
---       -- The color of the hints
---       highlight = "Comment",
---     },
---
---     -- options same as lsp hover / vim.lsp.util.open_floating_preview()
---     hover_actions = {
---
---       -- the border that is used for the hover window
---       -- see vim.api.nvim_open_win()
---       border = {
---         { "╭", "FloatBorder" },
---         { "─", "FloatBorder" },
---         { "╮", "FloatBorder" },
---         { "│", "FloatBorder" },
---         { "╯", "FloatBorder" },
---         { "─", "FloatBorder" },
---         { "╰", "FloatBorder" },
---         { "│", "FloatBorder" },
---       },
---
---       -- whether the hover action window gets automatically focused; default: false
---       auto_focus = false,
---     },
---
---     server = {
---       -- on_attach = function(_, bufnr)
---       -- on_attach(_, bufnr)
---       -- -- Hover actions
---       -- vim.keymap.set('n', '<M-space>', '<cmd>:RustHoverActions<CR>', { buffer = bufnr })
---       -- -- Code action groups
---       -- vim.keymap.set('n', '<leader>cA', '<cmd>lua vim.lsp.buf.code_action()<CR>', { buffer = bufnr })
---       -- end,
---
---       -- standalone file support; setting it to false may improve startup time
---       standalone = true,
---       settings = {
---         ["rust-analyzer"] = {
---           imports = {
---             granularity = {
---               group = "module",
---             },
---             prefix = "self",
---           },
---           cargo = {
---             buildScripts = {
---               enable = true,
---             },
---           },
---           procMacro = {
---             enable = true,
---           },
---           checkOnSave = {
---             command = "clippy",
---           },
---         },
---       },
---
---       -- debugging
---       -- dap = { },
---     },
---   }
--- }
-
--- all the mini.nvim plugins require activation
+-- all the mini.* plugins require activation
 require('mini.cursorword').setup()
 require('mini.surround').setup()
 require('mini.trailspace').setup()
 require('mini.ai').setup()
 
--- indent blank line
--- require("ibl").setup()
 
 -- Toggle inlay hints
 if vim.lsp.inlay_hint then
