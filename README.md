@@ -1,1 +1,1 @@
-neovim, tmux, zsh
+neovim, tmux, zsh, and a friendlier git
