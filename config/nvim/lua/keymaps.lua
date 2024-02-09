@@ -109,6 +109,9 @@ return {
   -- NOTE: I don't know where this comes from
   vim.keymap.set('n', '<leader>qt', ':TodoQuickFix<CR>', { desc = '[q]uickfix list: open the [t]odo items' }),
 
+  -- Open the URL of the commit in the browser
+  vim.keymap.set('n', '<leader>gx', ':GitBlameOpenCommitURL<CR>', { desc = 'open [gx]it commit URL ' }),
+
   -- [[ lua/handmade/quicklist.lua ]]
   --
   vim.keymap.set('n', '<leader>sv', function() require('handmade.quicklist').vimgrep_ui() end,
