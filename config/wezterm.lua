@@ -10,14 +10,14 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-function get_appearance()
+local function get_appearance()
 	if wezterm.gui then
 		return wezterm.gui.get_appearance()
 	end
 	return 'Dark'
 end
 
-function scheme_for_appearance(appearance)
+local function scheme_for_appearance(appearance)
 	if appearance:find 'Dark' then
 		return 'Batman'
 	else
