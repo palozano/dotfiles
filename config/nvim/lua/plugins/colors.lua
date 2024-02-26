@@ -2,7 +2,7 @@ return {
   'RRethy/nvim-base16',
   -- 'loctvl842/monokai-pro.nvim',
   config = function()
-    vim.cmd.colorscheme 'base16-darcula' -- base16-darcula, base16-monokai, //  monokai-pro
+    vim.cmd.colorscheme 'base16-espresso' -- base16-darcula, base16-monokai, //  monokai-pro
   end
 }
 

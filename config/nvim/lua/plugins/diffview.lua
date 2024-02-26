@@ -1,0 +1,47 @@
+return {
+  'sindrets/diffview.nvim',
+  -- config = function()
+  --   require('diffview').setup {
+  --     diff_binaries = false,
+  --     use_icons = true,
+  --     file_panel = {
+  --       width = 35,
+  --       use_icons = true,
+  --     },
+  --     key_bindings = {
+  --       file_panel = {
+  --         ["j"] = "next_entry",
+  --         ["<down>"] = "next_entry",
+  --         ["k"] = "prev_entry",
+  --         ["<up>"] = "prev_entry",
+  --         ["<cr>"] = "select_entry",
+  --         ["o"] = "select_entry",
+  --         ["R"] = "refresh_files",
+  --         ["<tab>"] = "select_next_entry",
+  --         ["<s-tab>"] = "select_prev_entry",
+  --         ["<leader>e"] = "focus_files",
+  --         ["<leader>b"] = "toggle_files",
+  --       },
+  --       file_history_panel = {
+  --         ["g!"] = "reset_preview",
+  --         ["<cr>"] = "select_entry",
+  --         ["o"] = "select_entry",
+  --         ["<tab>"] = "select_next_entry",
+  --         ["<s-tab>"] = "select_prev_entry",
+  --         ["<leader>e"] = "focus_files",
+  --         ["<leader>b"] = "toggle_files",
+  --       },
+  --       view = {
+  --         ["<tab>"] = "select_next_entry",
+  --         ["<s-tab>"] = "select_prev_entry",
+  --         ["<leader>e"] = "focus_files",
+  --         ["<leader>b"] = "toggle_files",
+  --       },
+  --     },
+  --   }
+  -- end,
+  -- cmd = 'DiffviewOpen',
+  -- keys = {
+  --   { 'n', '<leader>D', ':DiffviewOpen<CR>' },
+  -- },
+}

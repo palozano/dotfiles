@@ -1,7 +1,7 @@
 -- From rust.vim plugin, you can run individual tests
-vim.keymap.set('n', '<leader>cc', ':RustTest<CR>', { desc = "Run test under cursor" })
-vim.keymap.set('n', '<leader>cn', ':RustTest -- --nocapture<CR>',
-  { desc = "Run test under cursor (--nocapture)" })
+-- vim.keymap.set('n', '<leader>cc', ':RustTest<CR>', { desc = "Run test under cursor" })
+-- vim.keymap.set('n', '<leader>cn', ':RustTest -- --nocapture<CR>',
+--   { desc = "Run test under cursor (--nocapture)" })
 
 return {
   'rust-lang/rust.vim',

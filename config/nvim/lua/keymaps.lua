@@ -126,4 +126,23 @@ return {
 
   vim.keymap.set('n', '<leader>qx', function() require('handmade.quicklist').command_to_execute_in_quickfix_list() end,
     { desc = '[q]uickfix: e[x]ecute...' }),
+
+
+  -- Search and replace panel
+  vim.keymap.set('n', '<leader>S', function() require("spectre").toggle() end, {
+    desc = "Toggle search n' replace"
+  }),
+  vim.keymap.set('n', '<leader>sw', function() require("spectre").open_visual({ select_word = true }) end, {
+    desc = "[s]earch current [w]ord"
+  }),
+  vim.keymap.set('v', '<leader>sw', function() require("spectre").open_visual() end, {
+    desc = "[s]earch current [w]ord"
+  }),
+  -- vim.keymap.set('n', '<leader>sC', function() require("spectre").open_file_search({ select_word = true }) end, {
+  --   desc = "[s]earch on [C]urrent file"
+  -- }),
+
+
+  -- (git) diff view
+  vim.keymap.set('n', '<leader>D', ':DiffviewOpen<CR>', { desc = '[D]iffview: Open' }),
 }

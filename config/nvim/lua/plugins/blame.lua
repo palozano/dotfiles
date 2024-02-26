@@ -5,6 +5,7 @@ return {
     virt_text_pos = 'eol',
     delay = 300,
     date_format = '%r',
-    message_template = ' <author>, <date>, <summary>',
+    message_template = ' <author>, <date>',
+    -- message_template = ' <author>, <date>, <summary>',
   }
 }
