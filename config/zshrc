@@ -23,6 +23,7 @@ alias search="fzf --preview 'bat --color=always --style=numbers --line-range=:50
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
 alias work="cd ~/dev/repyh"
 alias webget="wget --mirror --convert-links --adjust-extension --page-requisites --no-parent"
+alias nn="nvim ~/Documents/notes/"
 
 ##########
 # HISTORY
@@ -75,3 +76,6 @@ export LESS=' --HILITE-UNREAD --ignore-case --incsearch --jump-target=4 --LONG-P
 #     --chop-long-lines
 
 eval "$(zoxide init --cmd cd zsh)"
+
+# opam configuration
+[[ ! -r /Users/palozano/.opam/opam-init/init.zsh ]] || source /Users/palozano/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

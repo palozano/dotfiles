@@ -26,7 +26,7 @@ local function scheme_for_appearance(appearance)
 	end
 end
 
-config.color_scheme = 'Darcula (base16)'
+config.color_scheme = 'Darcula (base16)' -- Darcula (base16)
 -- config.color_scheme = scheme_for_appearance(get_appearance())
 
 config.font = wezterm.font('Iosevka Light', { weight = 'Light', italic = false })

@@ -258,22 +258,31 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = {
     'bash', 'c', 'lua', 'rust',
     'vimdoc', 'vim', 'html', 'http', 'css',
-    'json', 'yaml', 'toml',
+    'json', 'yaml', 'toml', 'proto', 'elixir',
+    'ocaml'
     -- 'elixir', 'python', 'go'
   },
+
+  -- Check if this ones error or something
+  modules = {},
+  sync_install = false,
+  ignore_install = {},
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
 
-  highlight = { enable = true },
+  highlight = {
+    enable = true,
+    -- disable = { "rust" }
+  },
   indent = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
+      init_selection = '<M-space>',
+      node_incremental = '<M-i>',
+      node_decremental = '<M-d>',
+      scope_incremental = '<M-s>',
     },
   },
   textobjects = {
@@ -461,6 +470,11 @@ if vim.lsp.inlay_hint then
     { desc = '[i]nlay [h]int toggle' })
 end
 
+
+-- Coloring with LSP + TreeSitter has been pretty bad lately, so this is a fix to hide all semantic highlights
+for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+  vim.api.nvim_set_hl(0, group, {})
+end
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
