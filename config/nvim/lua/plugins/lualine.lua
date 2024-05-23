@@ -7,7 +7,7 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      -- theme = 'onedark',
+      theme = 'auto',
       component_separators = '|',
       section_separators = '',
     },
@@ -24,7 +24,7 @@ return {
       lualine_x = {
         { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
       },
-      lualine_y = { "diagnostics", "filesize" },
+      lualine_y = { "diagnostics", "location", "filesize" },
       lualine_z = {},
     },
   },

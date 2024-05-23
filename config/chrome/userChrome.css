@@ -1,8 +1,10 @@
+/* To open this file, go to `about:support`, and click on 
+the "Open Folder" button next to "Profile Folder". */
 @-moz-document url(chrome://browser/content/browser.xhtml) {
-	/* tabs on bottom of window */
-	/* requires that you set
-	 * toolkit.legacyUserProfileCustomizations.stylesheets = true
-	 * in about:config
+	/* Tabs on bottom of window. */
+	/* Requires that you set:
+	 * `toolkit.legacyUserProfileCustomizations.stylesheets = true`
+	 * in `about:config`.
 	 */
 	#main-window body { flex-direction: column-reverse !important; }
 	#navigator-toolbox { flex-direction: column-reverse !important; }
@@ -13,6 +15,7 @@
 		display: flex !important;
 		flex-direction: column !important;
 	}
+	/* Puts the user input at the bottom */
 	#urlbar-input-container {
 		order: 2;
 	}
@@ -23,6 +26,8 @@
 	#urlbar-results {
 		display: flex;
 		flex-direction: column-reverse;
+		/* top: calc(-75vh - 10px) !important; */
+		/* bottom: calc(+1000px) !important; */
 	}
 	.search-one-offs { display: none !important; }
 	.tab-background { border-top: none !important; }
@@ -54,7 +59,7 @@
 	 * rule.
 	 */
 	#mainPopupSet panel.panel-no-padding { margin-top: calc(-50vh + 40px) !important; }
-	#mainPopupSet .panel-viewstack, #mainPopupSet popupnotification { max-height: 50vh !important; height: 50vh; }
+	#mainPopupSet panel.panel-viewstack, #mainPopupSet popupnotification { max-height: 50vh !important; height: 50vh; }
 	#mainPopupSet panel.panel-no-padding.popup-notification-panel { margin-top: calc(-50vh - 35px) !important; }	
 	#navigator-toolbox .panel-viewstack { max-height: 75vh !important; }
 	panelview.cui-widget-panelview { flex: 1; }

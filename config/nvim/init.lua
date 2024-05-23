@@ -212,7 +212,14 @@ vim.g.undotree_WindowLayout = 4
 vim.g.undotree_SplitWidth = 40
 vim.g.undotree_DiffpanelHeight = 20
 
-vim.o.wildignore = "target/**"
+vim.o.wildignore = 'target/**'
+
+-- Folding
+vim.o.foldcolumn = 'auto'   -- "auto", '0', ...
+vim.o.foldmethod = 'manual' -- 'manual', indent', 'expr'
+-- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -462,11 +469,13 @@ require('mini.surround').setup()
 require('mini.trailspace').setup()
 require('mini.ai').setup()
 
+require("lsp_signature").setup()
+
 
 -- Toggle inlay hints
 if vim.lsp.inlay_hint then
   vim.keymap.set('n', '<leader>ih',
-    function() vim.lsp.inlay_hint.enable(0, not (vim.lsp.inlay_hint.is_enabled(0))) end,
+    function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end,
     { desc = '[i]nlay [h]int toggle' })
 end
 
