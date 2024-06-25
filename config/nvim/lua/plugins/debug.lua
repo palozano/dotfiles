@@ -28,7 +28,7 @@ return {
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
-      automatic_setup = true,
+      automatic_installation = true,
 
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
@@ -39,15 +39,35 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         -- 'delve',
+        -- 'lldb',
         'codelldb',
+        'cpptools',
       },
     }
 
-    dap.adapters.lldb = {
-      type = 'server',
-      name = 'lldb debugger',
-      command = 'lldb',
-    }
+    -- dap.adapters.lldb = {
+    --   -- dap.adapters.codelldb = {
+    --   type = 'server',
+    --   name = 'lldb debugger',
+    --   command = 'lldb',
+    --   port = "${port}",
+    --   -- executable = {
+    --   -- command = '/usr/bin/lldb',
+    --   -- args = { "--port", "${port}" },
+    --   -- }
+    -- }
+
+    -- dap.adapters.codelldb = {
+    --   type = 'server',
+    --   port = "${port}",
+    --   executable = "codelldb",
+    --   command = 'codelldb',
+    -- executable = {
+    --   -- Change this to your path!
+    --   command = '/home/kurotych/Sources/lldb/extension/adapter/codelldb',
+    --   args = { "--port", "${port}" },
+    -- }
+    -- }
 
     dap.configurations.rust = {
       {
@@ -63,10 +83,14 @@ return {
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
+    -- vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<leader>bC', dap.continue, { desc = 'Debug: Start/Continue' })
+    -- vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', '<leader>bsi', dap.step_into, { desc = 'Debug: Step Into' })
+    -- vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<leader>bso', dap.step_over, { desc = 'Debug: Step Over' })
+    -- vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<leader>bst', dap.step_out, { desc = 'Debug: Step Out' })
     vim.keymap.set('n', '<leader>bk', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
     vim.keymap.set('n', '<leader>bK', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
@@ -95,7 +119,7 @@ return {
     }
 
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
+    vim.keymap.set('n', '<leader>bL', dapui.toggle, { desc = 'Debug: See last session result.' })
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close

@@ -14,16 +14,16 @@ vim.g.maplocalleader = ' '
 
 -- Yet another package manager
 -- `:help lazy.nvim.txt` for more info
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
     lazypath,
-  }
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -385,7 +385,7 @@ mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
-      on_attach = on_attach,
+      -- on_attach = on_attach,
       settings = servers[server_name],
     }
   end,
@@ -435,11 +435,12 @@ cmp.setup {
   },
   -- installed sources
   sources = {
-    { name = 'nvim_lsp' },
+    -- { name = 'nvim_lsp' },
+    -- { name = 'path' },
+    -- { name = 'buffer' },
     { name = 'luasnip' },
-    { name = 'path' },
-    { name = 'buffer' },
-    { name = 'crates' }
+    { name = 'crates' },
+    { name = "codeium" }
   },
 }
 
@@ -483,6 +484,12 @@ end
 -- Coloring with LSP + TreeSitter has been pretty bad lately, so this is a fix to hide all semantic highlights
 for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
   vim.api.nvim_set_hl(0, group, {})
+end
+
+
+if vim.g.neovide then
+  -- Put anything you want to happen only in Neovide here
+  vim.o.guifont = "Iosevka NF Light:h17" -- text below applies for VimScript
 end
 
 
