@@ -79,3 +79,12 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # opam configuration
 [[ ! -r /Users/palozano/.opam/opam-init/init.zsh ]] || source /Users/palozano/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/palozano/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

@@ -1,5 +1,5 @@
 [user]
-	name = Pablo Lozano
+	name = Lozano
 	email = nivolabs@proton.me
 	signingkey = 11E86BFBF2ADF977
 [color "branch"]
@@ -99,3 +99,6 @@
 	cachetextconv = true
 [pull]
 	rebase = false
+# Enforce SSH
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
