@@ -99,6 +99,5 @@
 	cachetextconv = true
 [pull]
 	rebase = false
-# Enforce SSH
-[url "ssh://git@github.com/"]
+[url "ssh://git@github.com/"] # Enforce SSH
   insteadOf = https://github.com/

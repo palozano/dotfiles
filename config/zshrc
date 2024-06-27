@@ -21,9 +21,12 @@ export EDITOR="nvim"
 
 alias search="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs nvim"
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
-alias work="cd ~/dev/repyh"
+alias work="cd ~/dev"
 alias webget="wget --mirror --convert-links --adjust-extension --page-requisites --no-parent"
 alias nn="nvim ~/Documents/notes/"
+
+# alias git-https="git remote set-url origin https://github.com/$(git remote get-url origin | sed 's/https:\/\/github.com\///' | sed 's/git@github.com://')"
+# alias git-ssh="git remote set-url origin git@github.com:$(git remote get-url origin | sed 's/https:\/\/github.com\///' | sed 's/git@github.com://')"
 
 ##########
 # HISTORY

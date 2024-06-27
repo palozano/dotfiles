@@ -435,12 +435,12 @@ cmp.setup {
   },
   -- installed sources
   sources = {
-    -- { name = 'nvim_lsp' },
+    { name = 'nvim_lsp' },
     -- { name = 'path' },
     -- { name = 'buffer' },
     { name = 'luasnip' },
     { name = 'crates' },
-    { name = "codeium" }
+    -- { name = "codeium" }
   },
 }
 
@@ -490,6 +490,9 @@ end
 if vim.g.neovide then
   -- Put anything you want to happen only in Neovide here
   vim.o.guifont = "Iosevka NF Light:h17" -- text below applies for VimScript
+  vim.g.neovide_transparency = 0.85
+  vim.g.neovide_frame = "transparent"
+  vim.g.neovide_hide_cursor_when_typing = true
 end
 
 
