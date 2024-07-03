@@ -81,42 +81,6 @@ require('lazy').setup({
     },
   },
 
-  -- Useful plugin to show your pending keybinds.
-  {
-    'folke/which-key.nvim',
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 500
-    end,
-    opts = {}
-  },
-
-  {
-    -- Adds git releated signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
-          { buffer = bufnr, desc = '[g]o to [p]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk,
-          { buffer = bufnr, desc = '[g]o to [n]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk,
-          { buffer = bufnr, desc = '[p]review [h]unk' })
-      end,
-    },
-  },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',         opts = {} },
-
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
 
@@ -125,8 +89,6 @@ require('lazy').setup({
   -- requirements installed.
   {
     'nvim-telescope/telescope-fzf-native.nvim',
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
     build = 'make',
     cond = function()
       return vim.fn.executable 'make' == 1
@@ -146,6 +108,7 @@ require('lazy').setup({
   -- require 'plugins.debug',
 
   -- Add your plugins to `lua/custom/plugins/*.lua` to get going.
+  -- { import = 'handmade' },
   { import = 'plugins' },
   { import = 'keymaps' },
 }, {})
@@ -265,9 +228,8 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = {
     'bash', 'c', 'lua', 'rust',
     'vimdoc', 'vim', 'html', 'http', 'css',
-    'json', 'yaml', 'toml', 'proto', 'elixir',
-    'ocaml'
-    -- 'elixir', 'python', 'go'
+    'json', 'yaml', 'toml', 'proto',
+    'python', 'go', 'elixir'
   },
 
   -- Check if this ones error or something
@@ -440,7 +402,7 @@ cmp.setup {
     -- { name = 'buffer' },
     { name = 'luasnip' },
     { name = 'crates' },
-    -- { name = "codeium" }
+    { name = "codeium" }
   },
 }
 

@@ -91,3 +91,5 @@ path=('/Users/palozano/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
+
+eval "$(starship init zsh)"
