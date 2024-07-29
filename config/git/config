@@ -60,6 +60,9 @@
 	sync = !git switch main && git pull && git rm-merged && git switch -
 
 	dft = difftool
+
+	# edit all unmerged files at once
+	edit-unmerged = !git diff --name-only --diff-filter U | xargs -r $(git var GIT_EDITOR)
 [pager]
 	status = true
 	difftool = true
@@ -98,6 +101,6 @@
 	textconv = pandoc --to markdown
 	cachetextconv = true
 [pull]
-	rebase = false
+	rebase = true
 [url "ssh://git@github.com/"] # Enforce SSH
   insteadOf = https://github.com/

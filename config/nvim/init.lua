@@ -184,6 +184,9 @@ vim.o.foldmethod = 'manual' -- 'manual', indent', 'expr'
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 
+vim.o.listchars = "space:·"
+-- vim.o.list = true
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -229,7 +232,7 @@ require('nvim-treesitter.configs').setup {
     'bash', 'c', 'lua', 'rust',
     'vimdoc', 'vim', 'html', 'http', 'css',
     'json', 'yaml', 'toml', 'proto',
-    'python', 'go', 'elixir'
+    'python', 'go', 'elixir', 'solidity'
   },
 
   -- Check if this ones error or something
