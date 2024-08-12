@@ -33,7 +33,6 @@ return {
     require('crates').setup {
       smart_insert = true,
       insert_closing_quote = true,
-      avoid_prerelease = true,
       autoload = true,
       autoupdate = true,
       autoupdate_throttle = 250,
@@ -45,7 +44,6 @@ return {
       max_parallel_requests = 80,
       -- expand_crate_moves_cursor = true,
       open_programs = { "xdg-open", "open" },
-      disable_invalid_feature_diagnostic = false,
       -- enable_update_available_warning = true,
       text = {
         loading = "   Loading",
@@ -160,7 +158,7 @@ return {
           jump_back = { "<c-o>", "<C-RightMouse>" },
         },
       },
-      src = {
+      completion = {
         insert_closing_quote = true,
         text = {
           prerelease = "  pre-release ",

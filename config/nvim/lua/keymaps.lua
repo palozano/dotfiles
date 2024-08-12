@@ -145,4 +145,8 @@ return {
 
   -- (git) diff view
   vim.keymap.set('n', '<leader>D', ':DiffviewOpen<CR>', { desc = '[D]iffview: Open' }),
+
+  -- convert hex to decimal when pressing <leader>h
+  -- vim.keymap.set('n', '<leader>h', ':set invnumber<CR>', { desc = '[h]ex [d]ecimal' }),
+  vim.keymap.set('n', '<leader>h', ':let @@=<C-R><C-W><CR> :echo <C-R><C-W><CR>', { desc = 'see decimal repr of [h]ex' }),
 }

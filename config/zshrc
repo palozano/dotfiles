@@ -8,16 +8,17 @@ source $ZSH/oh-my-zsh.sh
 
 alias rrm=trash
 alias zconf="nvim ~/.zshrc && source ~/.zshrc"
+alias dots="nvim ~/dev/dotfiles"
 alias lg="lazygit"
 alias ls="lsd -l -g --icon auto --git"
-alias lt="lsd -1 -a --icon auto --tree --git-ignore"
-alias llt="lsd -1 --icon auto --tree --git-ignore"
+alias lt="lsd -1 -a --icon auto --tree --git"
+alias llt="lsd -1 --icon auto --tree --git"
 alias tz="TZ_LIST=\"Europe/Lisbon;Europe/London;US/Eastern,US-East;US/Pacific,US-Pacific;UTC\" tz"
 
 # Editors
 # alias kick="NVIM_APPNAME=kickstart nvim"
-# alias lazy="NVIM_APPNAME=lazy nvim"
 alias astro="NVIM_APPNAME=astro nvim"
+alias lazy="NVIM_APPNAME=lazy nvim"
 export EDITOR="nvim"
 
 # alias tmux="TERM=tmux-256color tmux"
@@ -97,3 +98,5 @@ export PATH
 # <<< juliaup initialize <<<
 
 eval "$(starship init zsh)"
+# eval "$(atuin init zsh --disable-ctrl-r)"
+

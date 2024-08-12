@@ -14,7 +14,7 @@ local liblldb_path = extension_path .. "/lldb/lib/liblldb.dylib"
 return {
   "mrcjkb/rustaceanvim",
   event = "BufReadPost",
-  version = "^4", -- Recommended
+  version = "^5", -- Recommended
   -- ft = { "rust" },
   config = function()
     vim.g.rustaceanvim = {
@@ -42,5 +42,7 @@ return {
     vim.keymap.set("n", "<leader>Re", "<cmd>RustLsp explainError<cr>", { noremap = true, silent = true })
     vim.keymap.set("n", "<leader>Rd", "<cmd>RustLsp renderDiagnostic<cr>", { noremap = true, silent = true })
     vim.keymap.set("n", "<leader>Rc", "<cmd>RustLsp openCargo<cr>", { noremap = true, silent = true })
+    vim.keymap.set("n", "<leader>RC", "<cmd>RustLsp openDocs<cr>", { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<leader>Rg", "<cmd>RustLsp crateGraph<cr>", { noremap = true, silent = true })
   end,
 }

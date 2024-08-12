@@ -232,7 +232,8 @@ require('nvim-treesitter.configs').setup {
     'bash', 'c', 'lua', 'rust',
     'vimdoc', 'vim', 'html', 'http', 'css',
     'json', 'yaml', 'toml', 'proto',
-    'python', 'go', 'elixir', 'solidity'
+    'python', 'go', 'elixir', 'erlang',
+    'solidity'
   },
 
   -- Check if this ones error or something
