@@ -19,7 +19,7 @@
 [help]
 	autoCorrect = immediate
 [gpg]
-	program = gpg2
+	program = gpg
 [credential]
 	helper = osxkeychain
 [fetch]

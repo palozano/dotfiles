@@ -24,7 +24,7 @@ return {
       lualine_x = {
         { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
       },
-      lualine_y = { "diagnostics", "location", "filesize" },
+      lualine_y = { "diagnostics", "selectioncount", "filesize" },
       lualine_z = {},
     },
   },
