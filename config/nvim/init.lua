@@ -104,6 +104,8 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  { 'nvim-treesitter/playground' },
+
   -- require 'plugins.autoformat',
   -- require 'plugins.debug',
 
