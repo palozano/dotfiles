@@ -24,7 +24,8 @@ export EDITOR="nvim"
 
 # alias tmux="TERM=tmux-256color tmux"
 # alias search="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs nvim"
-alias ss="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs nvim"
+alias ss="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+alias ns="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs nvim"
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
 alias work="cd ~/dev"
 alias webget="wget --mirror --convert-links --adjust-extension --page-requisites --no-parent"
@@ -85,19 +86,5 @@ export LESS=' --HILITE-UNREAD --ignore-case --incsearch --jump-target=4 --LONG-P
 #     --chop-long-lines
 
 eval "$(zoxide init --cmd cd zsh)"
-
-# opam configuration
-[[ ! -r /Users/palozano/.opam/opam-init/init.zsh ]] || source /Users/palozano/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-path=('/Users/palozano/.juliaup/bin' $path)
-export PATH
-
-# <<< juliaup initialize <<<
-
 # eval "$(starship init zsh)"
-# eval "$(atuin init zsh --disable-ctrl-r)"
-
+source <(fzf --zsh)
