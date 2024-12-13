@@ -180,14 +180,23 @@ vim.g.undotree_DiffpanelHeight = 20
 vim.o.wildignore = 'target/**'
 
 -- Folding
-vim.o.foldcolumn = 'auto'   -- "auto", '0', ...
-vim.o.foldmethod = 'manual' -- 'manual', indent', 'expr'
--- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
+vim.o.foldcolumn = '0'    -- "auto", '0', ...
+vim.o.foldmethod = 'expr' -- 'manual', indent', 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevel = 99      -- 0, 1, 99
+vim.o.foldlevelstart = 99 -- 0, 1, 99
 
 vim.o.listchars = "space:·"
 -- vim.o.list = true
+
+local _border = "single"
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, { border = _border }
+)
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, { border = _border }
+)
+vim.diagnostic.config { float = { border = _border } }
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -209,6 +218,11 @@ require('telescope').setup {
     layout_config = {
       width = 0.9,
     },
+    pickers = {
+      colorscheme = {
+        enable_preview = true,
+      }
+    }
   },
 }
 
@@ -225,7 +239,8 @@ require('nvim-treesitter.configs').setup {
     'vimdoc', 'vim', 'html', 'http', 'css',
     'json', 'yaml', 'toml', 'proto',
     'python', 'go', 'elixir', 'erlang',
-    'solidity'
+    'solidity', 'typescript', 'javascript',
+    'elixir'
   },
 
   -- Check if this ones error or something
@@ -418,8 +433,8 @@ cmp.setup.cmdline(':', {
 
 
 -- Magit for vim
-local neogit = require('neogit')
-neogit.setup {}
+-- local neogit = require('neogit')
+-- neogit.setup {}
 
 
 -- all the mini.* plugins require activation

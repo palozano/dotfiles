@@ -54,6 +54,8 @@ return {
   vim.keymap.set('n', '<leader>sW', require('telescope.builtin').lsp_dynamic_workspace_symbols,
     { desc = 'search [W]orkspace symbols' }),
   vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc = '[s]earch [c]ommands' }),
+  vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[s]earch [k]eymaps' }),
+  vim.keymap.set('n', '<leader>st', require('telescope.builtin').keymaps, { desc = '[s]earch [t]agstack' }),
 
   -- [[ d ]]    Diagnostic keymaps
   --
@@ -149,4 +151,7 @@ return {
   -- convert hex to decimal when pressing <leader>h
   -- vim.keymap.set('n', '<leader>h', ':set invnumber<CR>', { desc = '[h]ex [d]ecimal' }),
   vim.keymap.set('n', '<leader>h', ':let @@=<C-R><C-W><CR> :echo <C-R><C-W><CR>', { desc = 'see decimal repr of [h]ex' }),
+
+  -- Open summary window for git
+  vim.keymap.set('n', '<leader><Space>', ':Git<CR>', { desc = 'Open git summary' }),
 }

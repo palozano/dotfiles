@@ -1,14 +1,22 @@
 return {
   'RRethy/nvim-base16',
-  -- 'loctvl842/monokai-pro.nvim',
+  -- 'p00f/alabaster.nvim',
   config = function()
-    vim.cmd.colorscheme 'base16-espresso' -- base16-darcula, base16-monokai, //  monokai-pro
+    -- vim.cmd.colorscheme 'default'
+    -- vim.cmd.colorscheme 'base16-espresso'
+    vim.cmd.colorscheme 'base16-darcula'
+    -- vim.cmd.colorscheme 'base16-monokai'
+    -- vim.cmd.colorscheme 'base16-grayscale-dark'
+    -- vim.cmd.colorscheme 'base16-black-metal-burzum'
+    --
+    -- vim.cmd.colorscheme 'alabaster'
   end
 }
 
 -- Themes that I liked:
 -- base16-darcula
 -- base16-dracula
+-- 'base16-espresso'
 -- Un poco básicos, pero bueno:
 -- base16-google-dark
 -- base16-gruvbox-dark-soft
