@@ -11,9 +11,9 @@ return {
       changedelete = { text = '~' },
     },
     on_attach = function(bufnr)
-      vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+      vim.keymap.set('n', '<leader>gp', require('gitsigns').nav_hunk('prev'),
         { buffer = bufnr, desc = '[g]o to [p]revious Hunk' })
-      vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk,
+      vim.keymap.set('n', '<leader>gn', require('gitsigns').nav_hunk('next'),
         { buffer = bufnr, desc = '[g]o to [n]ext Hunk' })
       vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk,
         { buffer = bufnr, desc = '[p]review [h]unk' })
