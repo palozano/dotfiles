@@ -20,8 +20,9 @@ alias tz="TZ_LIST=\"Europe/Lisbon;Europe/London;US/Eastern,US-East;US/Pacific,US
 # alias kick="NVIM_APPNAME=kickstart nvim"
 alias astro="NVIM_APPNAME=astro nvim"
 alias lazy="NVIM_APPNAME=lazy nvim"
-alias nv="NVIM_APPNAME=nvchad nvim"
+alias chad="NVIM_APPNAME=nvchad nvim"
 alias nu="nvim -u NONE"
+alias nn="NVIM_APPNAME=scratch nvim"
 export EDITOR="nvim"
 
 # alias tmux="TERM=tmux-256color tmux"
@@ -31,12 +32,20 @@ alias ns="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
 alias work="cd ~/dev"
 alias webget="wget --mirror --convert-links --adjust-extension --page-requisites --no-parent"
-alias nn="nvim ~/Documents/notes/"
+# alias nn="nvim ~/Documents/notes/"
 alias r="ranger"
 
 # alias git-https="git remote set-url origin https://github.com/$(git remote get-url origin | sed 's/https:\/\/github.com\///' | sed 's/git@github.com://')"
 # alias git-ssh="git remote set-url origin git@github.com:$(git remote get-url origin | sed 's/https:\/\/github.com\///' | sed 's/git@github.com://')"
 alias geu="git edit-unmerged"
+
+###########
+# FUNCTIONS
+###########
+
+tt () {
+   mkdir -p -- "$1" && touch -- "$1"/"$2"
+}
 
 ##########
 # HISTORY
