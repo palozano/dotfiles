@@ -1,6 +1,5 @@
 local wezterm = require 'wezterm'
 local config = {}
-
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
@@ -8,7 +7,6 @@ end
 config.colors = {
 	foreground = "#c8d3f5",
 	background = "#222436",
-	-- cursor_bg = "#c8d3f5",
 	cursor_border = "#c8d3f5",
 	cursor_fg = "#222436",
 	selection_bg = "#2d3f76",
@@ -37,7 +35,6 @@ config.colors = {
 		new_tab_hover = {
 			fg_color = "#82aaff",
 			bg_color = "#222436",
-			-- intensity = "Bold"
 		},
 		new_tab = {
 			fg_color = "#82aaff",
@@ -48,10 +45,8 @@ config.colors = {
 	visual_bell = '#202020',
 }
 
--- config.color_scheme = 'Darcula (base16)' -- 'Darcula (base16)', 'Batman'
-
 config.font = wezterm.font('Iosevka Light', { weight = 'Light', italic = false })
-config.font_size = 19.0 -- original, 17.0, big 19.0, biggest 22.0
+config.font_size = 17.5
 
 config.window_decorations = "RESIZE"
 
@@ -72,5 +67,4 @@ config.visual_bell = {
 
 config.hide_tab_bar_if_only_one_tab = true
 
--- and finally, return the configuration to wezterm
 return config

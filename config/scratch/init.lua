@@ -27,7 +27,13 @@ vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":lua<CR>")
 vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "jk as <ESC> key" })
-vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal mode" })
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal mode" })
+
+-- faster resize windows
+vim.keymap.set("n", "<M-Up>", ":resize -5<CR>", { desc = "Resize window up" })
+vim.keymap.set("n", "<M-Down>", ":resize +5<CR>", { desc = "Resize window down" })
+vim.keymap.set("n", "<M-Left>", ":vertical resize -5<CR>", { desc = "Resize window left" })
+vim.keymap.set("n", "<M-Right>", ":vertical resize +5<CR>", { desc = "Resize window right" })
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

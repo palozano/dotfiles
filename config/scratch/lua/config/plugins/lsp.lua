@@ -24,7 +24,7 @@ return {
 			}
 		},
 		config = function(_, opts)
-			local set = vim.keymap.set 
+			local set = vim.keymap.set
 
 			-- completion with blink.cmp
 			local lspconfig = require('lspconfig')
@@ -56,9 +56,9 @@ return {
 					function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, { desc = "Inlay hints" })
 			end
 
-			set("n", "<leader>F", function() vim.lsp.buf.format() end, { desc = "Format the current file" })
-
-			set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, { desc = "Code action" })
+			set("n", "<leader>F", vim.lsp.buf.format, { desc = "Format the current file" })
+			set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symmbol" })
+			set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 
 
 			set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "Go to definition" })

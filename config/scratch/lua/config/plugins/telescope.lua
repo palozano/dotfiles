@@ -16,8 +16,8 @@ return {
 			local set = vim.keymap.set
 
 			set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-			-- set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-			set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+			set('n', '<leader>.', builtin.oldfiles, { desc = 'Telescope oldfiles' })
+			set('n', '<leader>,', builtin.buffers, { desc = 'Telescope existing buffers' })
 			set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 			set('n', '<leader>fk', builtin.keymaps, { desc = "Telescope keymaps" })
 
