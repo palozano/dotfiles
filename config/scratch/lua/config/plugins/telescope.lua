@@ -27,14 +27,14 @@ return {
 					cwd = vim.fn.stdpath('config')
 				})
 				builtin.find_files(opts)
-			end)
+			end, { desc = "Edit neovim config" })
 
 			-- search the packages from everywhere
 			set('n', '<leader>ep', function()
 				builtin.find_files {
 					cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
 				}
-			end)
+			end, { desc = "Edit neovim packages" })
 
 			require "config.telescope.multigrep".setup()
 		end

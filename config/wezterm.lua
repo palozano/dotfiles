@@ -17,6 +17,7 @@ config.colors = {
 
 	ansi = { "#1b1d2b", "#ff757f", "#c3e88d", "#ffc777", "#82aaff", "#c099ff", "#86e1fc", "#828bb8" },
 	brights = { "#444a73", "#ff8d94", "#c7fb6d", "#ffd8ab", "#9ab8ff", "#caabff", "#b2ebff", "#c8d3f5" },
+
 	tab_bar = {
 		inactive_tab_edge = "#1e2030",
 		background = "#222436",

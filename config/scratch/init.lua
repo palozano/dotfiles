@@ -23,9 +23,9 @@ vim.opt.cmdheight = 2
 vim.opt.confirm = true
 
 -- keymaps
-vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
-vim.keymap.set("n", "<space>x", ":.lua<CR>")
-vim.keymap.set("v", "<space>x", ":lua<CR>")
+vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>", { desc = "Source current file" })
+vim.keymap.set("n", "<space>x", ":.lua<CR>", { desc = "Source current line" })
+vim.keymap.set("v", "<space>x", ":lua<CR>", { desc = "Source current selection" })
 vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "jk as <ESC> key" })
 vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal mode" })
 
