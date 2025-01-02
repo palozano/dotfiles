@@ -15,11 +15,17 @@ return {
 			local builtin = require('telescope.builtin')
 			local set = vim.keymap.set
 
-			set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+			set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope all files' })
+			set('n', '<leader>fg', builtin.git_files, { desc = 'Telescope git files' })
 			set('n', '<leader>.', builtin.oldfiles, { desc = 'Telescope oldfiles' })
 			set('n', '<leader>,', builtin.buffers, { desc = 'Telescope existing buffers' })
 			set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 			set('n', '<leader>fk', builtin.keymaps, { desc = "Telescope keymaps" })
+			set('n', '<leader>fb', builtin.git_branches, { desc = 'Telescope git branches' })
+			set('n', '<leader>fc', builtin.git_commits, { desc = 'Telescope git branches' })
+			set('n', '<leader>fm', builtin.marks, { desc = 'Telescope marks' })
+			set('n', '<leader>fC', builtin.command_history, { desc = 'Telescope command history' })
+			set('n', '<leader>fH', builtin.search_history, { desc = 'Telescope search history' })
 
 			-- search the config files from everywhere
 			set('n', '<leader>en', function()

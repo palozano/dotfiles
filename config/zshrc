@@ -17,12 +17,12 @@ alias llt="lsd -1 --icon auto --tree --git"
 alias tz="TZ_LIST=\"Europe/Lisbon;Europe/London;US/Eastern,US-East;US/Pacific,US-Pacific;UTC\" tz"
 
 # Editors
-# alias kick="NVIM_APPNAME=kickstart nvim"
 alias astro="NVIM_APPNAME=astro nvim"
 alias lazy="NVIM_APPNAME=lazy nvim"
 alias chad="NVIM_APPNAME=nvchad nvim"
 alias nu="nvim -u NONE"
-alias nn="NVIM_APPNAME=scratch nvim"
+alias old="NVIM_APPNAME=oldnvim nvim"
+alias nn="nvim"
 export EDITOR="nvim"
 
 # alias tmux="TERM=tmux-256color tmux"
@@ -99,11 +99,6 @@ export LESS=' --HILITE-UNREAD --ignore-case --incsearch --jump-target=4 --LONG-P
 
 export GPG_TTY="$(tty)"
 
-eval "$(zoxide init --cmd cd zsh)"
-# eval "$(starship init zsh)"
-source <(fzf --zsh)
-
-
 # pnpm
 export PNPM_HOME="/Users/palozano/Library/pnpm"
 case ":$PATH:" in
@@ -114,3 +109,8 @@ esac
 
 # elixir's repl iex has this
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+source <(fzf --zsh)
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(starship init zsh)"
+

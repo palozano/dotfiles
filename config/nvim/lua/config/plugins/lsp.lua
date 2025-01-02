@@ -21,6 +21,18 @@ return {
 						enable = true,
 					}
 				},
+				ts_ls = {
+					filetypes = {
+						"javascript",
+						"typescript",
+					},
+				},
+				solidity_ls = {
+					cmd = { 'nomicfoundation-solidity-language-server', '--stdio' },
+					filetypes = { 'solidity' },
+					-- root_dir = require("lspconfig").util.find_git_ancestor,
+					-- single_file_support = true,
+				},
 			}
 		},
 		config = function(_, opts)
