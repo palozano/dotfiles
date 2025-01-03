@@ -30,24 +30,30 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 8
 vim.opt.foldnestmax = 8
 
--- keymaps
+-- better keymaps
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>", { desc = "Source current file" })
 vim.keymap.set("n", "<space>x", ":.lua<CR>", { desc = "Source current line" })
 vim.keymap.set("v", "<space>x", ":lua<CR>", { desc = "Source current selection" })
 vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "jk as <ESC> key" })
 vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal mode" })
 
--- faster resize windows
+-- resize windows
 vim.keymap.set("n", "<M-Up>", ":resize -5<CR>", { desc = "Resize window up" })
 vim.keymap.set("n", "<M-Down>", ":resize +5<CR>", { desc = "Resize window down" })
 vim.keymap.set("n", "<M-Left>", ":vertical resize -5<CR>", { desc = "Resize window left" })
 vim.keymap.set("n", "<M-Right>", ":vertical resize +5<CR>", { desc = "Resize window right" })
 
--- faster quickfix list movements
+-- quickfix list
 vim.keymap.set("n", "<C-j>", ":cnext<CR>", { desc = "Next quickfix list item" })
 vim.keymap.set("n", "<C-k>", ":cprev<CR>", { desc = "Previous quickfix list item" })
 vim.keymap.set("n", "<leader>qc", ":cclose<CR>", { desc = "Close quickfix list" })
 vim.keymap.set("n", "<leader>qo", ":copen<CR>", { desc = "Open quickfix list" })
+
+-- diagnostics
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic message' })
+vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { desc = 'diagnostic float' })
+vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'diagnostics list' })
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
