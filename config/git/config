@@ -1,7 +1,7 @@
 [user]
 	name = Pablo Lozano
 	email = nivolabs@proton.me
-	signingkey = 11E86BFBF2ADF977
+	signingkey = B964D1909B514760
 [color "branch"]
 	current = yellow reverse
 	local = yellow

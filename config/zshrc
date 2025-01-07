@@ -15,6 +15,8 @@ alias ls="lsd -l -g --icon auto --git"
 alias lt="lsd -1 -a --icon auto --tree --git"
 alias llt="lsd -1 --icon auto --tree --git"
 alias tz="TZ_LIST=\"Europe/Lisbon;Europe/London;US/Eastern,US-East;US/Pacific,US-Pacific;UTC\" tz"
+# kitty
+alias icat="kitten icat"
 
 # Editors
 alias astro="NVIM_APPNAME=astro nvim"
@@ -92,6 +94,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 eval "$(direnv hook zsh)"
 
 PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+PATH="/Library/TeX/texbin:$PATH"
 
 export LESS=' --HILITE-UNREAD --ignore-case --incsearch --jump-target=4 --LONG-PROMPT --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --use-color --window=-4'
 # removed options:

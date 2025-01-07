@@ -11,7 +11,6 @@ return {
 					},
 				},
 			},
-			{ 'sagen/blink.cmp' },
 		},
 		opts = {
 			servers = {
@@ -37,6 +36,7 @@ return {
 		},
 		config = function(_, opts)
 			local set = vim.keymap.set
+			local lsp = vim.lsp
 
 			-- completion with blink.cmp
 			local lspconfig = require('lspconfig')
@@ -49,36 +49,36 @@ return {
 			-- auto format on save
 			vim.api.nvim_create_autocmd('LspAttach', {
 				callback = function(args)
-					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					local client = lsp.get_client_by_id(args.data.client_id)
 					if not client then return end
 
 					if client.supports_method('textDocument/formatting') then
 						vim.api.nvim_create_autocmd('BufWritePre', {
 							buffer = args.buf,
 							callback = function()
-								vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+								lsp.buf.format({ bufnr = args.buf, id = client.id })
 							end,
 						})
 					end
 				end,
 			})
 
-			if vim.lsp.inlay_hint then
+			if lsp.inlay_hint then
 				set('n', '<leader>ih',
-					function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, { desc = "Inlay hints" })
+					function() lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, { desc = "Inlay hints" })
 			end
 
-			set("n", "<leader>F", vim.lsp.buf.format, { desc = "Format the current file" })
-			set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symmbol" })
-			set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+			set("n", "<leader>F", lsp.buf.format, { desc = "Format the current file" })
+			set("n", "<leader>rn", lsp.buf.rename, { desc = "Rename symmbol" })
+			set("n", "<leader>ca", lsp.buf.code_action, { desc = "Code action" })
 
 
-			set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "Go to definition" })
-			set("n", "gD", function() vim.lsp.buf.declaration() end, { desc = "Go to declaration" })
-			set('n', 'gI', function() vim.lsp.buf.implementation() end, { desc = "Go to implementation" })
-			set('n', 'gT', function() vim.lsp.buf.type_definition() end, { desc = "Go to type" })
-			set('n', "gW", function() vim.lsp.buf.workspace_symbol() end, { desc = "Go to workspace symbols" })
-			set("n", "g0", function() vim.lsp.buf.document_symbol() end, { desc = "Go to document symbol" })
+			set("n", "gd", function() lsp.buf.definition() end, { desc = "Go to definition" })
+			set("n", "gD", function() lsp.buf.declaration() end, { desc = "Go to declaration" })
+			set('n', 'gI', function() lsp.buf.implementation() end, { desc = "Go to implementation" })
+			set('n', 'gT', function() lsp.buf.type_definition() end, { desc = "Go to type" })
+			set('n', "gW", function() lsp.buf.workspace_symbol() end, { desc = "Go to workspace symbols" })
+			set("n", "g0", function() lsp.buf.document_symbol() end, { desc = "Go to document symbol" })
 		end,
 	}
 }

@@ -46,7 +46,7 @@ config.colors = {
 	visual_bell = '#202020',
 }
 
-config.font = wezterm.font('Iosevka Light', { weight = 'Light', italic = false })
+config.font = wezterm.font('Iosevka Light', { weight = 'Light' })
 config.font_size = 17.5
 
 config.window_decorations = "RESIZE"

@@ -23,6 +23,24 @@ return {
 						}
 					},
 				},
+				pickers = {
+					buffers = { theme = "ivy", },
+					command_history = { theme = "ivy" },
+					diagnostics = { theme = "ivy" },
+					find_files = { theme = "ivy", },
+					git_branches = { theme = "ivy", },
+					git_commits = { theme = "ivy" },
+					git_files = { theme = "ivy", },
+					help_tags = { theme = "ivy" },
+					keymaps = { theme = "ivy" },
+					lsp_document_symbols = { theme = "ivy" },
+					lsp_references = { theme = "ivy" },
+					man_pages = { theme = "ivy" },
+					marks = { theme = "ivy", },
+					oldfiles = { theme = "ivy", },
+					registers = { theme = "ivy" },
+					search_history = { theme = "ivy" },
+				},
 				extensions = {
 					file_browser = {
 						theme = "ivy",
@@ -61,6 +79,7 @@ return {
 			set('n', '<leader>fm', builtin.marks, { desc = 'Telescope marks' })
 			set('n', '<leader>fr', builtin.registers, { desc = 'Telescope registers' })
 			set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Telescope symbols' })
+			set('n', 'gr', builtin.lsp_references, { desc = 'Telescope to references' })
 
 			-- search the config files from everywhere
 			set('n', '<leader>en', function()
@@ -76,7 +95,6 @@ return {
 					cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
 				}
 			end, { desc = "Edit neovim packages" })
-
 
 			require('telescope').load_extension('fzf')
 			require('telescope').load_extension("ui-select")
