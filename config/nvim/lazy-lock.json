@@ -16,6 +16,7 @@
   "mini.align": { "branch": "main", "commit": "26111a737494bc39576ad67b52bbc2638ca23553" },
   "mini.cursorword": { "branch": "main", "commit": "7d1b38a17834acbbc4feff8e42aedc4ed0c6ff06" },
   "mini.icons": { "branch": "main", "commit": "1c79feb7478ca773fa3dac5cadf43ced9180e861" },
+  "mini.surround": { "branch": "main", "commit": "0e67c4bc147f2a15cee94e7c94dcc0e115b9f55e" },
   "neogen": { "branch": "main", "commit": "b2e78708876f4da507839726816010a68e33fec8" },
   "neotest": { "branch": "master", "commit": "d66cf4e05a116957f0d3a7755a24291c7d1e1f72" },
   "neotest-rust": { "branch": "main", "commit": "e1cb22ecf0341fb894ef2ebde344389fe6e6fc8e" },

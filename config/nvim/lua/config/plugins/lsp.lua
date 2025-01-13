@@ -20,10 +20,11 @@ return {
 						enable = true,
 					}
 				},
+				pylsp = {},
 				ts_ls = {
 					filetypes = {
-						"javascript",
-						"typescript",
+						"javascript", "javascriptreact", "javascript.jsx",
+						"typescript", "typescriptreact", "typescript.tsx",
 					},
 				},
 				solidity_ls = {
@@ -32,19 +33,30 @@ return {
 					-- root_dir = require("lspconfig").util.find_git_ancestor,
 					-- single_file_support = true,
 				},
+				emmet_language_server = {},
 			}
 		},
 		config = function(_, opts)
 			local set = vim.keymap.set
 			local lsp = vim.lsp
+			local lspconfig = require('lspconfig')
 
 			-- completion with blink.cmp
-			local lspconfig = require('lspconfig')
 			for server, config in pairs(opts.servers) do
 				-- passing config.capabilities to blink.cmp merges with the capabilities in your
 				config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
 				lspconfig[server].setup(config)
 			end
+
+			-- emmet completion (e.g.: div.loader<TAB> -> <div class="loader"></div>)
+			lspconfig.emmet_language_server.setup({
+				capabilities = require('blink.cmp').get_lsp_capabilities(),
+				filetypes = {
+					"html", "css", "less", "sass", "scss",
+					"javascriptreact", "typescriptreact",
+					"heex"
+				},
+			})
 
 			-- auto format on save
 			vim.api.nvim_create_autocmd('LspAttach', {
@@ -63,11 +75,13 @@ return {
 				end,
 			})
 
+			-- toggle inlay hints
 			if lsp.inlay_hint then
 				set('n', '<leader>ih',
 					function() lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, { desc = "Inlay hints" })
 			end
 
+			-- keymaps
 			set("n", "<leader>F", lsp.buf.format, { desc = "Format the current file" })
 			set("n", "<leader>rn", lsp.buf.rename, { desc = "Rename symmbol" })
 			set("n", "<leader>ca", lsp.buf.code_action, { desc = "Code action" })

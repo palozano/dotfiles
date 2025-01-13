@@ -3,8 +3,36 @@ require("config.lazy")
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 2
 vim.opt.clipboard = "unnamedplus"
-vim.opt.number = true
-vim.opt.relativenumber = true
+
+-- Absolute numbering in INSERT, relative numbers in everything else
+--
+-- vim.opt.number = true
+-- vim.opt.relativenumber = true
+local numbertoggle = vim.api.nvim_create_augroup("numbertoggle", {})
+vim.api.nvim_create_autocmd(
+	{ "BufEnter", "FocusGained", "InsertLeave", "WinEnter", "CmdlineLeave" },
+	{
+		group = numbertoggle,
+		callback = function()
+			if vim.opt.number:get() and vim.api.nvim_get_mode() ~= "i" then
+				vim.opt.relativenumber = true
+			end
+		end,
+	}
+)
+vim.api.nvim_create_autocmd(
+	{ "BufLeave", "FocusLost", "InsertEnter", "WinLeave", "CmdlineEnter" },
+	{
+		group = numbertoggle,
+		callback = function()
+			if vim.opt.number:get() then
+				vim.opt.relativenumber = false
+				vim.cmd("redraw")
+			end
+		end,
+	}
+)
+
 vim.opt.hlsearch = false
 vim.opt.mouse = 'a'
 vim.opt.undofile = true
@@ -44,8 +72,36 @@ vim.keymap.set("n", "<M-Left>", ":vertical resize -5<CR>", { desc = "Resize wind
 vim.keymap.set("n", "<M-Right>", ":vertical resize +5<CR>", { desc = "Resize window right" })
 
 -- quickfix list
-vim.keymap.set("n", "<C-j>", ":cnext<CR>", { desc = "Next quickfix list item" })
-vim.keymap.set("n", "<C-k>", ":cprev<CR>", { desc = "Previous quickfix list item" })
+-- local function is_quickfix_open()
+-- 	for _, win in ipairs(vim.fn.getwininfo()) do
+-- 		if win.quickfix == 1 then
+-- 			return true
+-- 		end
+-- 	end
+-- 	return false
+-- end
+--
+-- local function qf_next()
+-- 	if is_quickfix_open() then
+-- 		vim.cmd("cnext")
+-- 	else
+-- 		vim.notify("Quickfix not open")
+-- 	end
+-- end
+--
+-- local function qf_prev()
+-- 	if is_quickfix_open() then
+-- 		":cprev<CR>"
+-- 	else
+-- 		vim.notify("Quickfix not open")
+-- 	end
+-- end
+--
+-- vim.keymap.set("n", "<C-j>", ":cnext<CR>", { desc = "Next quickfix list item" })
+-- vim.keymap.set("n", "<C-k>", ":cprev<CR>", { desc = "Previous quickfix list item" })
+-- vim.keymap.set("n", "<C-j>", function() qf_next() end, { desc = "Next quickfix list item" })
+-- vim.keymap.set("n", "<C-k>", function() qf_prev() end, { desc = "Previous quickfix list item" })
+
 vim.keymap.set("n", "<leader>qc", ":cclose<CR>", { desc = "Close quickfix list" })
 vim.keymap.set("n", "<leader>qo", ":copen<CR>", { desc = "Open quickfix list" })
 
