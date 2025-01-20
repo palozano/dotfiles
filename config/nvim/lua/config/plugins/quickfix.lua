@@ -58,10 +58,13 @@ return {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
+      signs = false, -- icons in the signs column
     },
     keys = {
-      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Telescope TODO" },
-      { "<leader>qt", "<cmd>TodoQuickFix<cr>",  desc = "Quickfix TODO" },
+      { "<leader>ft", "<cmd>TodoTelescope<cr>",                            desc = "Telescope TODO" },
+      { "<leader>qt", "<cmd>TodoQuickFix<cr>",                             desc = "Quickfix TODO" },
+      { "]t",         function() require("todo-comments").jump_next() end, desc = "Next TODO comment" },
+      { "[t",         function() require("todo-comments").jump_prev() end, desc = "Next TODO comment" },
     },
   },
 

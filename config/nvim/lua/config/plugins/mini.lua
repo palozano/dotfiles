@@ -5,7 +5,7 @@ return {
     -- improve editing experience
     require("mini.align").setup()
     require("mini.pairs").setup()
-    -- require("mini.operators").setup()
+    require("mini.operators").setup()
     require("mini.surround").setup()
     -- improve UI
     require("mini.cursorword").setup()
