@@ -34,7 +34,7 @@ return {
           help_tags = { theme = "ivy" },
           keymaps = { theme = "ivy" },
           lsp_document_symbols = { theme = "ivy" },
-          lsp_references = { theme = "ivy" },
+          lsp_references = { theme = "ivy", fname_width = 100 },
           man_pages = { theme = "ivy" },
           marks = { theme = "ivy", },
           oldfiles = { theme = "ivy", },

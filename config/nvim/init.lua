@@ -33,6 +33,8 @@ opt.foldlevel = 99
 opt.foldlevelstart = 8
 opt.foldnestmax = 8
 
+opt.conceallevel = 1
+
 
 local set = vim.keymap.set
 -- better keymaps

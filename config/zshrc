@@ -25,6 +25,8 @@ alias chad="NVIM_APPNAME=nvchad nvim"
 alias nu="nvim -u NONE"
 alias old="NVIM_APPNAME=oldnvim nvim"
 alias nn="nvim"
+alias nt="nvim ~/Documents/notes/obsidian"
+
 export EDITOR="nvim"
 
 # alias tmux="TERM=tmux-256color tmux"
