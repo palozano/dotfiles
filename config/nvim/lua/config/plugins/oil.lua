@@ -63,17 +63,7 @@ return {
         ["<C-s>"] = { "actions.select", opts = { vertical = true } },
         ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
         ["<C-t>"] = { "actions.select", opts = { tab = true } },
-        ["<C-p>"] = {
-          callback = function()
-            local oil = require "oil"
-            local width = vim.api.nvim_win_get_width(0)
-            if width < 100 then
-              oil.open_preview { vertical = false, split = "botright" }
-            else
-              oil.open_preview { vertical = true, split = "botright" }
-            end
-          end
-        },
+        ["<C-p>"] = { "actions.preview", opts = { horizontal = true, split = "botright" } },
         ["<C-c>"] = { "actions.close", mode = "n" },
         ["<C-l>"] = "actions.refresh",
         ["-"] = { "actions.parent", mode = "n" },
