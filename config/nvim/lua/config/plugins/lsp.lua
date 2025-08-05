@@ -85,6 +85,7 @@ return {
       set("n", "<leader>F", lsp.buf.format, { desc = "Format the current file" })
       set("n", "<leader>rn", lsp.buf.rename, { desc = "Rename symmbol" })
       set("n", "<leader>ca", lsp.buf.code_action, { desc = "Code action" })
+      set("v", "<leader>ca", lsp.buf.code_action, { desc = "Code action" })
       set('n', 'gI', function() lsp.buf.implementation() end, { desc = "Go to implementation" })
       -- default ones are:
       -- set("n", "grn", lsp.buf.rename, { desc = "Rename symmbol" })
