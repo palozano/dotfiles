@@ -24,3 +24,16 @@ ln -sf "$PWD/config/nvim" ~/.config/nvim
 # Add the tmux config if it doesn’t exist
 # [ ! -e ~/.tmux.conf ] && ln -s "$PWD/config/tmux.conf" ~/.tmux.conf
 ln -sf "$PWD/config/tmux.conf" ~/.tmux.conf
+
+
+ln -sf "$PWD/config/wezterm.lua" ~/.wezterm.lua
+
+
+
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+git clone https://github.com/joshskidmore/zsh-fzf-history-search ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
+
+git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
